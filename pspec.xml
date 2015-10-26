@@ -1,0 +1,75 @@
+<?xml version="1.0" ?>
+<!DOCTYPE PISI SYSTEM "https://solus-project.com/standard/pisi-spec.dtd">
+<PISI>
+    <Source>
+        <Name>nvidia-340-glx-driver</Name>
+        <Homepage>https://nvidia.com</Homepage>
+        <Packager>
+            <Name>Ikey Doherty</Name>
+            <Email>ikey@solus-project.com</Email>
+        </Packager>
+        <Summary>NVIDIA Binary Driver</Summary>
+        <Description>NVIDIA Binary Driver</Description>
+        <License>EULA</License>
+        <Archive sha1sum="05ef4b8b01aa532d89cef309f268ae1c7beffdc0" type="binary">http://us.download.nvidia.com/XFree86/Linux-x86_64/340.93/NVIDIA-Linux-x86_64-340.93-no-compat32.run</Archive>
+        <BuildDependencies>
+            <Dependency type="pkgconfig">xorg-server</Dependency>
+            <Dependency type="pkgconfig">gtk+-2.0</Dependency>
+            <Dependency>kernel</Dependency>
+            <Dependency>kernel-modules</Dependency>
+            <Dependency>kernel-headers</Dependency>
+        </BuildDependencies>
+
+        <AdditionalFiles>
+            <AdditionalFile target="nv-drm.patch">nv-drm.patch</AdditionalFile>
+            <AdditionalFile permission="0755" target="nvidia_supported">nvidia_supported</AdditionalFile>
+        </AdditionalFiles>
+    </Source>
+
+    <Package>
+        <Name>nvidia-340-glx-driver</Name>
+        <Files>
+            <Path fileType="executable">/usr/bin</Path>
+            <Path fileType="data">/usr/share/pixmaps</Path>
+            <Path fileType="data">/usr/share/applications</Path>
+            <Path fileType="library">/usr/lib/xorg/modules</Path>
+            <Path fileType="library">/lib64/modules</Path>
+            <Path fileType="library">/usr/lib/lib*.so*</Path>
+            <Path fileType="library">/usr/lib/glx-provider/nvidia</Path>
+            <Path fileType="library">/usr/lib/vdpau</Path>
+            <Path fileType="data">/etc/OpenCL</Path>
+            
+            <Path fileType="data">/etc/modprobe.d/nvidia.conf</Path>
+        </Files>
+        <Provides>
+            <COMAR script="package.py">System.Package</COMAR>
+        </Provides>
+        <RuntimeDependencies>
+            <Dependency>gl-driver-switch</Dependency>
+            <Dependency>kernel-modules</Dependency>
+        </RuntimeDependencies>
+        <Conflicts>
+            <Package>nvidia-glx-driver</Package>
+            <Package>nvidia-304-glx-driver</Package>
+        </Conflicts>
+    </Package>
+
+    <Package>
+        <Name>nvidia-340-glx-driver-modaliases</Name>
+        <Summary>modalias files for the nvidia-glx-driver</Summary>
+        <Description>modalias files for the nvidia-glx-driver</Description>
+        <Files>
+            <Path fileType="data">/usr/share/doflicky/modaliases</Path>
+        </Files>
+    </Package>
+
+    <History>
+        <Update release="1">
+            <Date>10-26-2015</Date>
+            <Version>340.93</Version>
+            <Comment>Initial inclusion</Comment>
+            <Name>Ikey Doherty</Name>
+            <Email>ikey@solus-project.com</Email>
+        </Update>
+    </History>
+</PISI>
