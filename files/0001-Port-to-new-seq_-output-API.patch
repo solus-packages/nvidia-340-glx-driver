@@ -1,0 +1,37 @@
+From 344ab703a4b9500b9d880a8fbefc3ecbaadf5c6a Mon Sep 17 00:00:00 2001
+From: Ikey Doherty <ikey@solus-project.com>
+Date: Mon, 2 Nov 2015 02:38:32 +0000
+Subject: [PATCH] Port to new seq_ output API
+
+Signed-off-by: Ikey Doherty <ikey@solus-project.com>
+---
+ kernel/nv-procfs.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/kernel/nv-procfs.c b/kernel/nv-procfs.c
+index 7a9fb70..904023e 100644
+--- a/kernel/nv-procfs.c
++++ b/kernel/nv-procfs.c
+@@ -607,7 +607,8 @@ nv_procfs_read_registry(
+     registry_keys = ((nvl != NULL) ?
+             nvl->registry_keys : nv_registry_keys);
+ 
+-    return seq_printf(s, "Binary: \"%s\"\n", registry_keys);
++    seq_printf(s, "Binary: \"%s\"\n", registry_keys);
++    return 0;
+ }
+ 
+ static ssize_t
+@@ -674,7 +675,8 @@ nv_procfs_read_text_file(
+     void *v
+ )
+ {
+-    return seq_puts(s, s->private);
++    seq_puts(s, s->private);
++    return 0;
+ }
+ 
+ NV_DEFINE_PROCFS_SINGLE_FILE(text_file);
+-- 
+2.6.2
+
