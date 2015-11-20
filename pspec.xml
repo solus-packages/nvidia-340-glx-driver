@@ -11,7 +11,7 @@
         <Summary>NVIDIA Binary Driver</Summary>
         <Description>NVIDIA Binary Driver</Description>
         <License>EULA</License>
-        <Archive sha1sum="05ef4b8b01aa532d89cef309f268ae1c7beffdc0" type="binary">http://us.download.nvidia.com/XFree86/Linux-x86_64/340.93/NVIDIA-Linux-x86_64-340.93-no-compat32.run</Archive>
+        <Archive sha1sum="49a1038f8f709a0a8855c7071db5923749d071e2" type="binary">http://us.download.nvidia.com/XFree86/Linux-x86_64/340.96/NVIDIA-Linux-x86_64-340.96-no-compat32.run</Archive>
         <BuildDependencies>
             <Dependency type="pkgconfig">xorg-server</Dependency>
             <Dependency type="pkgconfig">gtk+-2.0</Dependency>
@@ -64,6 +64,14 @@
     </Package>
 
     <History>
+        <Update release="6">
+            <Date>11-20-2015</Date>
+            <Version>340.96</Version>
+            <Comment>Update to 340.96</Comment>
+            <Name>Ikey Doherty</Name>
+            <Email>ikey@solus-project.com</Email>
+        </Update>
+
         <Update release="5">
             <Date>11-02-2015</Date>
             <Version>340.93</Version>
