@@ -63,6 +63,7 @@ def install():
     # data files
     pisitools.dosed("nvidia-settings.desktop", "__UTILS_PATH__", "/usr/bin")
     pisitools.dosed("nvidia-settings.desktop", "__PIXMAP_PATH__", "/usr/share/pixmaps")
+    pisitools.dosed("nvidia-settings.desktop", "Settings", "System")
     pisitools.insinto("/usr/share/applications", "nvidia-settings.desktop")
     pisitools.insinto("/usr/share/pixmaps", "nvidia-settings.png")
     pisitools.insinto("/etc/OpenCL/vendors", "nvidia.icd")
