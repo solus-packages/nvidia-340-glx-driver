@@ -11,7 +11,7 @@
         <Summary>NVIDIA Binary Driver</Summary>
         <Description>NVIDIA Binary Driver</Description>
         <License>EULA</License>
-        <Archive sha1sum="49a1038f8f709a0a8855c7071db5923749d071e2" type="binary">http://us.download.nvidia.com/XFree86/Linux-x86_64/340.96/NVIDIA-Linux-x86_64-340.96-no-compat32.run</Archive>
+        <Archive sha1sum="1cfabc6116192aa5ba46293aa842eb1a5addeeed" type="binary">http://us.download.nvidia.com/XFree86/Linux-x86_64/340.96/NVIDIA-Linux-x86_64-340.96.run</Archive>
         <BuildDependencies>
             <Dependency type="pkgconfig">xorg-server</Dependency>
             <Dependency type="pkgconfig">gtk+-2.0</Dependency>
@@ -54,6 +54,30 @@
         </Conflicts>
     </Package>
 
+     <Package>
+        <Name>nvidia-340-glx-driver-32bit</Name>
+        <Files>
+            <Path fileType="library">/usr/lib32/lib*.so*</Path>
+            <Path fileType="library">/usr/lib32/glx-provider/nvidia</Path>
+            <Path fileType="library">/usr/lib32/vdpau</Path>
+        </Files>
+        <Provides>
+            <COMAR script="multilib.py">System.Package</COMAR>
+        </Provides>
+        <RuntimeDependencies>
+            <Dependency>nvidia-340-glx-driver</Dependency>
+            <Dependency>glibc-32bit</Dependency>
+            <Dependency>libgcc-32bit</Dependency>
+            <Dependency>libx11-32bit</Dependency>
+            <Dependency>libxext-32bit</Dependency>
+        </RuntimeDependencies>
+        <Conflicts>
+            <Package>nvidia-glx-driver-32bit</Package>
+            <Package>nvidia-304-glx-driver-32bit</Package>
+        </Conflicts>
+    </Package>
+
+
     <Package>
         <Name>nvidia-340-glx-driver-modaliases</Name>
         <Summary>modalias files for the nvidia-glx-driver</Summary>
@@ -64,6 +88,14 @@
     </Package>
 
     <History>
+        <Update release="25">
+            <Date>03-01-2016</Date>
+            <Version>340.96</Version>
+            <Comment>Enable multilib</Comment>
+            <Name>Ikey Doherty</Name>
+            <Email>ikey@solus-project.com</Email>
+        </Update>
+
         <Update release="24">
             <Date>02-25-2016</Date>
             <Version>340.96</Version>

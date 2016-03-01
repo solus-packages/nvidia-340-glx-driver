@@ -6,13 +6,13 @@ NoStrip = ["/"]
 from pisi.actionsapi import get, shelltools, pisitools, autotools, kerneltools
 import commands
 
-wdir = "NVIDIA-Linux-x86_64-%s-no-compat32" % get.srcVERSION()
+wdir = "NVIDIA-Linux-x86_64-%s" % get.srcVERSION()
 
 # Required... built in tandem with kernel update
 kversion = "4.4.3"
 
 def setup():
-    shelltools.system("sh NVIDIA-Linux-x86_64-%s-no-compat32.run --extract-only" % get.srcVERSION())
+    shelltools.system("sh NVIDIA-Linux-x86_64-%s.run --extract-only" % get.srcVERSION())
     shelltools.cd(wdir)
     shelltools.system("patch -p0 < ../nv-drm.patch")
 
@@ -22,9 +22,9 @@ def build():
     shelltools.cd("uvm")
     autotools.make("\"SYSSRC=/lib64/modules/%s/build\" module" % kversion)
 
-def link_install(lib, libdir='/usr/lib', abi='1'):
+def link_install(lib, libdir='/usr/lib', abi='1', cdir='.'):
     ''' Install a library with necessary links '''
-    pisitools.dolib("%s.so.%s" % (lib, get.srcVERSION()), libdir)
+    pisitools.dolib("%s/%s.so.%s" % (cdir, lib, get.srcVERSION()), libdir)
     pisitools.dosym("%s/%s.so.%s" % (libdir, lib, get.srcVERSION()), "%s/%s.so.%s" % (libdir, os.path.basename(lib), abi))
     pisitools.dosym("%s/%s.so.%s" % (libdir, lib, abi), "%s/%s.so" % (libdir, os.path.basename(lib)))
         
@@ -40,17 +40,28 @@ def install():
     for lib in libs:
         abi = '2' if lib == "libGLESv2" else "1"
         link_install(lib, "/usr/lib/glx-provider/nvidia", abi)
+        if lib != "libglx":
+            link_install(lib, "/usr/lib32/glx-provider/nvidia", abi, cdir='32')
 
     # non-conflict libraries
     libs =  ["libnvidia-glcore", "libnvidia-eglcore", "libnvidia-glsi",
-        "libnvidia-ifr", "libnvidia-fbc", "libnvidia-encode", "libnvidia-cfg",
-        "libnvidia-ml", "tls/libnvidia-tls", "libcuda", "libnvcuvid"]
+        "libnvidia-ifr", "libnvidia-fbc", "libnvidia-encode",
+        "libnvidia-ml", "libcuda", "libnvcuvid"]
 
+    native_libs = ["libnvidia-cfg"]
     for lib in libs:
+        link_install(lib)
+        link_install(lib, libdir='/usr/lib32', cdir='32')
+    for lib in native_libs:
         link_install(lib)
 
     # vdpau provider
     link_install("libvdpau_nvidia", "/usr/lib/vdpau")
+    link_install("libvdpau_nvidia", "/usr/lib32/vdpau", cdir='32')
+
+    # TLS
+    link_install("tls/libnvidia-tls")
+    link_install("tls/libnvidia-tls", libdir='/usr/lib32', cdir='32')
 
     # binaries
     bins = ["nvidia-debugdump", "nvidia-xconfig", "nvidia-settings",
