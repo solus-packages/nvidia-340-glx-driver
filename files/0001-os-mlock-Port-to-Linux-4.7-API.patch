@@ -1,0 +1,58 @@
+From e916e775b911afba523932b9b06e193bf0b9b663 Mon Sep 17 00:00:00 2001
+From: Ikey Doherty <ikey@solus-project.com>
+Date: Sun, 7 Aug 2016 22:26:05 +0100
+Subject: [PATCH] os-mlock: Port to Linux 4.7 API
+
+Signed-off-by: Ikey Doherty <ikey@solus-project.com>
+---
+ kernel/os-mlock.c            | 6 +++---
+ kernel/uvm/nvidia_uvm_lite.c | 2 +-
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/kernel/os-mlock.c b/kernel/os-mlock.c
+index dc30e1c..2cb75db 100644
+--- a/kernel/os-mlock.c
++++ b/kernel/os-mlock.c
+@@ -45,7 +45,7 @@ RM_STATUS NV_API_CALL os_lock_user_pages(
+     }
+ 
+     down_read(&mm->mmap_sem);
+-    ret = get_user_pages(current, mm, (unsigned long)address,
++    ret = get_user_pages((unsigned long)address,
+             page_count, write, force, user_pages, NULL);
+     up_read(&mm->mmap_sem);
+     pinned = ret;
+@@ -58,7 +58,7 @@ RM_STATUS NV_API_CALL os_lock_user_pages(
+     else if (pinned < page_count)
+     {
+         for (i = 0; i < pinned; i++)
+-            page_cache_release(user_pages[i]);
++            put_page(user_pages[i]);
+         os_free_mem(user_pages);
+         return RM_ERR_INVALID_ADDRESS;
+     }
+@@ -85,7 +85,7 @@ RM_STATUS NV_API_CALL os_unlock_user_pages(
+     {
+         if (write)
+             set_page_dirty_lock(user_pages[i]);
+-        page_cache_release(user_pages[i]);
++        put_page(user_pages[i]);
+     }
+ 
+     os_free_mem(user_pages);
+diff --git a/kernel/uvm/nvidia_uvm_lite.c b/kernel/uvm/nvidia_uvm_lite.c
+index 442a0a8..695f092 100644
+--- a/kernel/uvm/nvidia_uvm_lite.c
++++ b/kernel/uvm/nvidia_uvm_lite.c
+@@ -785,7 +785,7 @@ int _fault_common(struct vm_area_struct *vma, unsigned long vaddr,
+         // a reference so that the fault handling logic is correct:
+         //
+         get_page(pTracking->uvmPage);
+-        retValue = VM_FAULT_MINOR;
++        retValue = 0;
+     }
+ 
+     pRecord->isMapped = NV_TRUE;
+-- 
+2.9.2
+

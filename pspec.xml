@@ -22,6 +22,7 @@
 
         <AdditionalFiles>
             <AdditionalFile target="nv-drm.patch">nv-drm.patch</AdditionalFile>
+            <AdditionalFile target="0001-os-mlock-Port-to-Linux-4.7-API.patch">0001-os-mlock-Port-to-Linux-4.7-API.patch</AdditionalFile>
             <AdditionalFile permission="0755" target="nvidia_supported">nvidia_supported</AdditionalFile>
         </AdditionalFiles>
     </Source>
@@ -94,6 +95,14 @@
     </Package>
 
     <History>
+        <Update release="51">
+            <Date>08-07-2016</Date>
+            <Version>340.96</Version>
+            <Comment>Package bump</Comment>
+            <Name>Ikey Doherty</Name>
+            <Email>ikey@solus-project.com</Email>
+        </Update>
+
         <Update release="50">
             <Date>08-04-2016</Date>
             <Version>340.96</Version>
