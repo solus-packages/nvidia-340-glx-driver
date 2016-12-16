@@ -15,7 +15,6 @@ def setup():
     shelltools.system("sh NVIDIA-Linux-x86_64-%s.run --extract-only" % get.srcVERSION())
     shelltools.cd(wdir)
     shelltools.system("patch -p0 < ../nv-drm.patch")
-    shelltools.system("patch -p1 < ../0001-os-mlock-Port-to-Linux-4.7-API.patch")
 
 def build():
     shelltools.cd(wdir + "/kernel")
