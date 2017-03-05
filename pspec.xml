@@ -50,7 +50,7 @@
             <COMAR script="package.py">System.Package</COMAR>
         </Provides>
         <RuntimeDependencies>
-            <Dependency>gl-driver-switch</Dependency>
+            <Dependency>linux-driver-management</Dependency>
             <Dependency releaseFrom="185">kernel-modules</Dependency>
             <Dependency>libva-vdpau-driver</Dependency>
         </RuntimeDependencies>
