@@ -6,22 +6,76 @@ NoStrip = ["/"]
 from pisi.actionsapi import get, shelltools, pisitools, autotools, kerneltools
 import commands
 
-wdir = "NVIDIA-Linux-x86_64-%s" % get.srcVERSION()
-
 # Required... built in tandem with kernel update
-kversion = "4.9.39-35.lts"
+kernel_trees = {
+    "linux-lts": "4.9.40-36.lts",
+    "linux-current": "4.12.4-6.current"
+}
 
-def setup():
-    shelltools.system("sh NVIDIA-Linux-x86_64-%s.run --extract-only" % get.srcVERSION())
-    shelltools.cd(wdir)
+def patch_dir(kernel):
+    """ Handle patching for each kernel type """
+    olddir = os.getcwd()
+    shelltools.cd(kernel)
     shelltools.system("patch -p0 < ../nv-drm.patch")
     shelltools.system("patch -p0 < ../linux49.patch")
 
+    # See: https://github.com/Hoshpak/void-packages/blob/master/srcpkgs/nvidia340/files/linux-4.12.patch
+    # And: https://devtalk.nvidia.com/default/topic/1008771/linux/nvidia-340-xx-compile-error-with-kernel-4-12-rc1/post/5179612/#5179612
+    if kernel == "linux-current":
+        shelltools.system("patch -p0 < ../4.10.0_kernel.patch")
+        shelltools.system("patch -p0 < ../linux-4.11.patch")
+        shelltools.system("patch -p0 < ../linux-4.12.patch")
+    shelltools.cd(olddir)
+
+def setup():
+    """ Extract the NVIDIA binary for each kernel tree and rename it each time
+        to match the desired tree, to ensure we don't have them conflicting. """
+    blob = "NVIDIA-Linux-x86_64-%s" % get.srcVERSION()
+    for kernel in kernel_trees:
+        shelltools.system("sh %s.run --extract-only" % blob)
+        shelltools.move(blob, kernel)
+        patch_dir(kernel)
+
 def build():
-    shelltools.cd(wdir + "/kernel")
-    autotools.make("\"SYSSRC=/lib64/modules/%s/build\" module" % kversion)
+    for kernel in kernel_trees:
+        build_kernel(kernel)
+
+def build_kernel(typename):
+    version = kernel_trees[typename]
+    olddir = os.getcwd()
+    shelltools.cd(typename + "/kernel")
+    autotools.make("\"SYSSRC=/lib64/modules/%s/build\" module" % version)
     shelltools.cd("uvm")
-    autotools.make("\"SYSSRC=/lib64/modules/%s/build\" module" % kversion)
+    autotools.make("\"SYSSRC=/lib64/modules/%s/build\" module" % version)
+    shelltools.cd(olddir)
+
+def install_kernel(typename):
+    olddir = os.getcwd()
+    version = kernel_trees[typename]
+
+    kdir = "/lib64/modules/%s/kernel/drivers/video" % version
+    # kernel portion, i.e. /lib/modules/3.19.7/kernel/drivers/video/nvidia.ko
+    shelltools.cd(typename + "/kernel")
+    pisitools.dolib_a("nvidia.ko", kdir)
+    shelltools.cd("uvm")
+    pisitools.dolib_a("nvidia-uvm.ko", kdir)
+
+    shelltools.cd(olddir)
+
+def install_modalias(typename):
+    """ install_modalias will generate modaliases for the given tree, which will
+        only be linux-lts for now
+    """
+    olddir = os.getcwd()
+    shelltools.cd(typename + "/kernel")
+
+    # install modalias
+    pisitools.dodir("/usr/share/doflicky/modaliases")
+    modfile = "%s/usr/share/doflicky/modaliases/%s.modaliases" % (get.installDIR(), get.srcNAME())
+    shelltools.system("sh -e ../../nvidia_supported nvidia %s ../README.txt nvidia.ko > %s" %
+                     (get.srcNAME(), modfile))
+
+    shelltools.cd(olddir)
 
 def link_install(lib, libdir='/usr/lib', abi='1', cdir='.'):
     ''' Install a library with necessary links '''
@@ -30,11 +84,14 @@ def link_install(lib, libdir='/usr/lib', abi='1', cdir='.'):
     pisitools.dosym("%s/%s.so.%s" % (libdir, lib, abi), "%s/%s.so" % (libdir, os.path.basename(lib)))
         
 def install():
-    # driver portion
-    shelltools.cd(wdir)
-    pisitools.dolib("nvidia_drv.so", "/usr/lib/xorg/modules/drivers")
+    for kernel in kernel_trees:
+        install_kernel(kernel)
+    install_modalias("linux-lts")
 
-    kdir = "/lib64/modules/%s/kernel/drivers/video" % kversion
+    # glx portion, always build from the linux-lts tree
+    shelltools.cd("linux-lts")
+
+    pisitools.dolib("nvidia_drv.so", "/usr/lib/xorg/modules/drivers")
 
     # libGL replacement - conflicts
     libs = ["libGL", "libEGL", "libGLESv1_CM", "libGLESv2", "libglx"]
@@ -79,19 +136,6 @@ def install():
     pisitools.insinto("/usr/share/applications", "nvidia-settings.desktop")
     pisitools.insinto("/usr/share/pixmaps", "nvidia-settings.png")
     pisitools.insinto("/usr/share/OpenCL/vendors", "nvidia.icd")
-
-    # kernel portion, i.e. /lib/modules/3.19.7/kernel/drivers/video/nvidia.ko
-    shelltools.cd("kernel")
-    pisitools.dolib_a("nvidia.ko", kdir)
-
-    # install modalias
-    pisitools.dodir("/usr/share/doflicky/modaliases")
-    with open("%s/usr/share/doflicky/modaliases/%s.modaliases" % (get.installDIR(), get.srcNAME()), "w") as outp:
-        inp = commands.getoutput("../../nvidia_supported nvidia %s ../README.txt nvidia.ko" % get.srcNAME())
-        outp.write(inp)
-
-    shelltools.cd("uvm")
-    pisitools.dolib_a("nvidia-uvm.ko", kdir)
 
     # Blacklist nouveau
     pisitools.dodir("/usr/lib/modprobe.d")
