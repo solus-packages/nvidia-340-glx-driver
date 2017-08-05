@@ -16,7 +16,6 @@ def patch_dir(kernel):
     """ Handle patching for each kernel type """
     olddir = os.getcwd()
     shelltools.cd(kernel)
-    shelltools.system("patch -p0 < ../nv-drm.patch")
     shelltools.system("patch -p0 < ../linux49.patch")
 
     # See: https://github.com/Hoshpak/void-packages/blob/master/srcpkgs/nvidia340/files/linux-4.12.patch
@@ -25,6 +24,8 @@ def patch_dir(kernel):
         shelltools.system("patch -p0 < ../4.10.0_kernel.patch")
         shelltools.system("patch -p0 < ../linux-4.11.patch")
         shelltools.system("patch -p0 < ../linux-4.12.patch")
+    else:
+        shelltools.system("patch -p0 < ../nv-drm.patch")
     shelltools.cd(olddir)
 
 def setup():
