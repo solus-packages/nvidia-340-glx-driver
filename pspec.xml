@@ -108,7 +108,7 @@
         </Provides>
         <RuntimeDependencies>
             <Dependency release="current">nvidia-340-glx-driver-common</Dependency>
-            <Dependency releaseFrom="25">linux-current</Dependency>
+            <Dependency releaseFrom="27">linux-current</Dependency>
         </RuntimeDependencies>
         <Conflicts>
             <Package>nvidia-glx-driver-current</Package>
@@ -154,6 +154,14 @@
     </Package>
 
     <History>
+        <Update release="133">
+            <Date>10-14-2017</Date>
+            <Version>340.102</Version>
+            <Comment>Rebuild for linux-current</Comment>
+            <Name>Ikey Doherty</Name>
+            <Email>ikey@solus-project.com</Email>
+        </Update>
+
         <Update release="132">
             <Date>10-12-2017</Date>
             <Version>340.102</Version>
