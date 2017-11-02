@@ -8,22 +8,19 @@ import commands
 
 # Required... built in tandem with kernel update
 kernel_trees = {
-    "linux-lts": "4.9.59-55.lts",
-    "linux-current": "4.13.10-30.current"
+    "linux-lts": "4.9.60-56.lts",
+    "linux-current": "4.13.11-31.current"
 }
 
 def patch_dir(kernel):
     """ Handle patching for each kernel type """
     olddir = os.getcwd()
     shelltools.cd(kernel)
-    shelltools.system("patch -p0 < ../linux49.patch")
 
     # See: https://github.com/Hoshpak/void-packages/blob/master/srcpkgs/nvidia340/files/linux-4.12.patch
     # And: https://devtalk.nvidia.com/default/topic/1008771/linux/nvidia-340-xx-compile-error-with-kernel-4-12-rc1/post/5179612/#5179612
     if kernel == "linux-current":
-        shelltools.system("patch -p0 < ../4.10.0_kernel.patch")
         shelltools.system("patch -p0 < ../linux-4.11.patch")
-        shelltools.system("patch -p0 < ../linux-4.12.patch")
     else:
         shelltools.system("patch -p0 < ../nv-drm.patch")
     shelltools.cd(olddir)
