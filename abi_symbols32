@@ -292,6 +292,10 @@ libnvcuvid.so.1:cuvidMapVideoFrame
 libnvcuvid.so.1:cuvidParseVideoData
 libnvcuvid.so.1:cuvidSetVideoSourceState
 libnvcuvid.so.1:cuvidUnmapVideoFrame
+libnvidia-compiler.so.340.104:NvCliCompileLogFree
+libnvidia-compiler.so.340.104:NvCliCompileProgram
+libnvidia-compiler.so.340.104:NvCliCompiledProgramFree
+libnvidia-compiler.so.340.104:nvvmCompilerProperty
 libnvidia-eglcore.so.340.104:NvGlEglGetFunctions
 libnvidia-encode.so.1:NvEncodeAPICreateInstance
 libnvidia-fbc.so.1:NvFBCBindContext
@@ -518,6 +522,9 @@ libnvidia-ml.so.1:nvmlUnitGetPsuInfo
 libnvidia-ml.so.1:nvmlUnitGetTemperature
 libnvidia-ml.so.1:nvmlUnitGetUnitInfo
 libnvidia-ml.so.1:nvmlUnitSetLedState
+libnvidia-opencl.so.1:clGetExportTable
+libnvidia-opencl.so.1:clGetExtensionFunctionAddress
+libnvidia-opencl.so.1:clGetPlatformInfo
 libnvidia-tls.so.340.104:_nv006tls
 libnvidia-tls.so.340.104:_nv007tls
 libnvidia-tls.so.340.104:_nv008tls
