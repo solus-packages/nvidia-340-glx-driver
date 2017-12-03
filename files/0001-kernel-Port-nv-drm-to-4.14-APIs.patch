@@ -1,0 +1,35 @@
+From 5a11bc5a2a5c2b7fab95822062ac74e413af0f8e Mon Sep 17 00:00:00 2001
+From: Ikey Doherty <ikey@solus-project.com>
+Date: Sun, 3 Dec 2017 16:37:16 +0000
+Subject: [PATCH] kernel: Port nv-drm to 4.14 APIs
+
+Signed-off-by: Ikey Doherty <ikey@solus-project.com>
+---
+ kernel/nv-drm.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/kernel/nv-drm.c b/kernel/nv-drm.c
+index 2aa7cc8..23df996 100644
+--- a/kernel/nv-drm.c
++++ b/kernel/nv-drm.c
+@@ -173,7 +173,7 @@ int __init nv_drm_init(
+ {
+     int ret = 0;
+ #if defined(NV_DRM_AVAILABLE)
+-    ret = drm_pci_init(&nv_drm_driver, pci_driver);
++    ret = drm_legacy_pci_init(&nv_drm_driver, pci_driver);
+ #endif
+     return ret;
+ }
+@@ -183,7 +183,7 @@ void nv_drm_exit(
+ )
+ {
+ #if defined(NV_DRM_AVAILABLE)
+-    drm_pci_exit(&nv_drm_driver, pci_driver);
++    drm_legacy_pci_exit(&nv_drm_driver, pci_driver);
+ #endif
+ }
+ 
+-- 
+2.15.1
+

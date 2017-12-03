@@ -1,47 +1,47 @@
-name        : nvidia-340-glx-driver
-version     : 340.104
-release     : 143
-source      :
+name       : nvidia-340-glx-driver
+version    : 340.104
+release    : 144
+source     :
     - http://us.download.nvidia.com/XFree86/Linux-x86_64/340.104/NVIDIA-Linux-x86_64-340.104.run : baf131979e3eafb65239aa1863751d5893906eeb617ce7fb37253d69fa2b66a2
-extract     : no
-homepage    : https://nvidia.com
-license     :
+extract    : no
+homepage   : https://nvidia.com
+license    :
     - EULA
-summary     :
+summary    :
     - NVIDIA 340xx Binary Driver (LTS Kernel)
-    - common: Shared assets for the NVIDIA 340xx GLX Driver
-    - current: NVIDIA 340xx Binary Driver (Current Kernel)
-    - modaliases: Files to help with DoFlicky driver detection
-component   :
+    - common : Shared assets for the NVIDIA 340xx GLX Driver
+    - current : NVIDIA 340xx Binary Driver (Current Kernel)
+    - modaliases : Files to help with DoFlicky driver detection
+component  :
     - kernel.drivers
-    - common: xorg.driver
-    - current: kernel.drivers
-    - modaliases: kernel.drivers
-    - 32bit: xorg.driver
-description : |
+    - common : xorg.driver
+    - current : kernel.drivers
+    - modaliases : kernel.drivers
+    - 32bit : xorg.driver
+description: |
     NVIDIA Binary Driver
-rundeps     :
-    - common:
+rundeps    :
+    - common :
         - linux-driver-management
         - libva-vdpau-driver
-    - 32bit:
+    - 32bit :
         - nvidia-340-glx-driver-common
         - libva-vdpau-driver-32bit
-    - main: nvidia-340-glx-driver-common
-    - current: nvidia-340-glx-driver-common
-conflicts   :
-    - common:
+    - main : nvidia-340-glx-driver-common
+    - current : nvidia-340-glx-driver-common
+conflicts  :
+    - common :
         - nvidia-304-glx-driver-common
         - nvidia-glx-driver-common
-patterns    :
-    - common: /*
-    - modaliases: /usr/share/doflicky/modaliases
-    - 32bit: /usr/lib32
-    - main: /lib/modules/*.lts
-    - current: /lib/modules/*.current
-strip       : no
-debug       : no
-builddeps   :
+patterns   :
+    - common : /*
+    - modaliases : /usr/share/doflicky/modaliases
+    - 32bit : /usr/lib32
+    - main : /lib/modules/*.lts
+    - current : /lib/modules/*.current
+strip      : no
+debug      : no
+builddeps  :
     - pkgconfig(xorg-server)
     - pkgconfig(gtk+-2.0)
     - pkgconfig(gtk+-3.0)
@@ -69,6 +69,7 @@ setup      : |
 
     pushd current_kernel
     %patch -p1 < $pkgfiles/linux-4.11.patch
+    %patch -p2 < $pkgfiles/0001-kernel-Port-nv-drm-to-4.14-APIs.patch
     popd
 build      : |
     # The older NVIDIA drivers don't like -C so we pushd.
@@ -159,7 +160,7 @@ install    : |
     # Keep settings UI happy
     install -D -d -m 00755 $installdir/usr/share/nvidia
     install -m 00644 nvidia-application-profiles-${version}-key-documentation $installdir/usr/share/nvidia/.
-    
+
     # Blacklist nouveau
     install -D -d -m 00755 $installdir/usr/lib/modprobe.d
     echo "blacklist nouveau" > $installdir/usr/lib/modprobe.d/nvidia.conf
