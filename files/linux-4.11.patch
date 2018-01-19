@@ -1,8 +1,10 @@
---- a/uvm/nvidia_uvm_lite.c  2017-03-31 03:42:21.000000000 +0200
-+++ b/uvm/nvidia_uvm_lite.c  2017-04-06 23:53:14.273356795 +0200
-@@ -818,7 +818,11 @@
+diff --git a/uvm/nvidia_uvm_lite.c b/uvm/nvidia_uvm_lite.c
+index 246ed04..bb7de97 100644
+--- a/uvm/nvidia_uvm_lite.c
++++ b/uvm/nvidia_uvm_lite.c
+@@ -818,7 +818,11 @@ done:
  }
-
+ 
  #if defined(NV_VM_OPERATIONS_STRUCT_HAS_FAULT)
 +#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 11, 0)
  int _fault(struct vm_area_struct *vma, struct vm_fault *vmf)
@@ -10,21 +12,21 @@
 +int _fault(struct vm_fault *vmf)
 +#endif
  {
-     unsigned long vaddr = (unsigned long)vmf->virtual_address;
-     struct page *page = NULL;
-@@ -828,7 +828,11 @@
+ #if defined(NV_VM_FAULT_HAS_ADDRESS)
+     unsigned long vaddr = vmf->address;
+@@ -828,7 +832,11 @@ int _fault(struct vm_area_struct *vma, struct vm_fault *vmf)
      struct page *page = NULL;
      int retval;
-
+ 
 +#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 11, 0)
      retval = _fault_common(vma, vaddr, &page, vmf->flags);
 +#else
 +    retval = _fault_common(NULL, vaddr, &page, vmf->flags);
 +#endif
-
+ 
      vmf->page = page;
-
-@@ -866,7 +866,11 @@
+ 
+@@ -866,7 +874,11 @@ static struct vm_operations_struct uvmlite_vma_ops =
  // it's dealing with anonymous mapping (see handle_pte_fault).
  //
  #if defined(NV_VM_OPERATIONS_STRUCT_HAS_FAULT)

@@ -1,8 +1,8 @@
 name       : nvidia-340-glx-driver
-version    : 340.104
-release    : 153
+version    : '340.106'
+release    : 154
 source     :
-    - http://us.download.nvidia.com/XFree86/Linux-x86_64/340.104/NVIDIA-Linux-x86_64-340.104.run : baf131979e3eafb65239aa1863751d5893906eeb617ce7fb37253d69fa2b66a2
+    - http://us.download.nvidia.com/XFree86/Linux-x86_64/340.106/NVIDIA-Linux-x86_64-340.106.run : 6cf90d28b1505348da2d75d12f4f878bc91b474bf71254d7b6acee10c3bbcb5b
 extract    : no
 homepage   : https://nvidia.com
 license    :
@@ -62,14 +62,9 @@ setup      : |
     # We need systemd units.
     tar xf nvidia-persistenced-init.tar.bz2
 
-    # Patch kernels
-    pushd lts_kernel
-    %patch -p1 < $pkgfiles/nv-drm.patch
-    popd
-
+    # Add support for new kernels
     pushd current_kernel
     %patch -p1 < $pkgfiles/linux-4.11.patch
-    %patch -p2 < $pkgfiles/0001-kernel-Port-nv-drm-to-4.14-APIs.patch
     popd
 build      : |
     # The older NVIDIA drivers don't like -C so we pushd.
