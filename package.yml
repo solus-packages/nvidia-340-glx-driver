@@ -1,6 +1,6 @@
 name       : nvidia-340-glx-driver
 version    : '340.106'
-release    : 154
+release    : 155
 source     :
     - http://us.download.nvidia.com/XFree86/Linux-x86_64/340.106/NVIDIA-Linux-x86_64-340.106.run : 6cf90d28b1505348da2d75d12f4f878bc91b474bf71254d7b6acee10c3bbcb5b
 extract    : no
@@ -24,9 +24,11 @@ rundeps    :
     - common :
         - linux-driver-management
         - libva-vdpau-driver
+        - libglvnd
     - 32bit :
         - nvidia-340-glx-driver-common
         - libva-vdpau-driver-32bit
+        - libglvnd-32bit
     - main : nvidia-340-glx-driver-common
     - current : nvidia-340-glx-driver-common
 conflicts  :
@@ -35,7 +37,9 @@ conflicts  :
         - nvidia-glx-driver-common
 patterns   :
     - common : /*
-    - modaliases : /usr/share/doflicky/modaliases
+    - modaliases :
+        - /usr/share/doflicky/modaliases
+        - /usr/share/linux-driver-management/modaliases
     - 32bit : /usr/lib32
     - main : /lib/modules/*.lts
     - current : /lib/modules/*.current
@@ -90,9 +94,12 @@ install    : |
     install -D -d -m 00755 $installdir/lib/modules/%kernel_version_current%/kernel/drivers/video
     install -m 00644 current_kernel/{,uvm/}*.ko $installdir/lib/modules/%kernel_version_current%/kernel/drivers/video/.
 
-    # Prepare doflicky modaliases from the LTS kernel
+    # Prepare modaliases from the LTS kernel
     sh -e $pkgfiles/nvidia_supported nvidia ${package} README.txt lts_kernel/nvidia.ko > modalias
     install -D -m 00644 modalias $installdir/usr/share/doflicky/modaliases/${package}.modaliases
+
+    # New location, keep the old one around for a short while
+    install -D -m 00644 modalias $installdir/usr/share/linux-driver-management/modaliases/${package}.modaliases
 
     # Install nvidia driver for xorg
     install -D -m 00755 nvidia_drv.so $installdir/%libdir%/xorg/modules/drivers/nvidia_drv.so
@@ -133,10 +140,13 @@ install    : |
     redo_libs $installdir/usr/lib64/lib*.so.%version%
     redo_libs $installdir/usr/lib32/lib*.so.%version%
 
+    # Nuke stuff that isnt allowed to persist.
+    rm -v $installdir/%libdir%/libglx.so*
+
     # Now move the GL providers out into glx-provider tree
-    install -d -D -m 00755 $installdir/usr/lib{32,64}/glx-provider/nvidia
-    mv -v $installdir/%libdir%/lib{EGL,GL,GLESv1_CM,GLESv2,glx}.so* $installdir/%libdir%/glx-provider/nvidia/.
-    mv -v $installdir/usr/lib32/lib{EGL,GL,GLESv1_CM,GLESv2}.so* $installdir/usr/lib32/glx-provider/nvidia/.
+    install -d -D -m 00755 $installdir/usr/lib{32,64}/nvidia
+    mv -v $installdir/%libdir%/lib{EGL,GL,GLESv1_CM,GLESv2}.so* $installdir/%libdir%/nvidia/.
+    mv -v $installdir/usr/lib32/lib{EGL,GL,GLESv1_CM,GLESv2}.so* $installdir/usr/lib32/nvidia/.
 
     # Move vdpau into the final position
     install -D -d -m 00755 $installdir/usr/lib{32,64}/vdpau
@@ -170,3 +180,8 @@ install    : |
     install -D -m 00644 $pkgfiles/nvidia-340-glx-driver.tmpfiles $installdir/%libdir%/tmpfiles.d/nvidia-340-glx-driver.conf
     install -D -m 00644 $pkgfiles/nvidia-340-glx-driver.sysusers $installdir/%libdir%/sysusers.d/nvidia-340-glx-driver.conf
     install -D -m 00755 $pkgfiles/create-uvm-dev-node $installdir/sbin/create-uvm-dev-node
+
+    # Make sure our glx is found, LDM will handle the main config file
+    install -D -m 00644 $pkgfiles/xorg.conf $installdir/usr/share/X11/xorg.conf.d/10-nvidia.conf
+    install -D -m 00644 libglx.so.${version} $installdir/%libdir%/nvidia/modules/libglx.so
+    ln -sv libglx.so $installdir/%libdir%/nvidia/modules/libglx.so.1
