@@ -1,6 +1,6 @@
 name       : nvidia-340-glx-driver
 version    : '340.106'
-release    : 176
+release    : 177
 source     :
     - http://us.download.nvidia.com/XFree86/Linux-x86_64/340.106/NVIDIA-Linux-x86_64-340.106.run : 6cf90d28b1505348da2d75d12f4f878bc91b474bf71254d7b6acee10c3bbcb5b
 extract    : no
@@ -11,7 +11,7 @@ summary    :
     - NVIDIA 340xx Binary Driver (LTS Kernel)
     - common : Shared assets for the NVIDIA 340xx GLX Driver
     - current : NVIDIA 340xx Binary Driver (Current Kernel)
-    - modaliases : Files to help with DoFlicky driver detection
+    - modaliases : These files are used by the Software Center for hardware detection
 component  :
     - kernel.drivers
     - common : xorg.driver
