@@ -20,11 +20,11 @@
 </Description>
         <PartOf>kernel.drivers</PartOf>
         <RuntimeDependencies>
-            <Dependency releaseFrom="188">nvidia-340-glx-driver-common</Dependency>
+            <Dependency releaseFrom="189">nvidia-340-glx-driver-common</Dependency>
         </RuntimeDependencies>
         <Files>
-            <Path fileType="data">/lib/modules/4.9.107-97.lts/kernel/drivers/video/nvidia-uvm.ko</Path>
-            <Path fileType="data">/lib/modules/4.9.107-97.lts/kernel/drivers/video/nvidia.ko</Path>
+            <Path fileType="data">/lib/modules/4.9.110-98.lts/kernel/drivers/video/nvidia-uvm.ko</Path>
+            <Path fileType="data">/lib/modules/4.9.110-98.lts/kernel/drivers/video/nvidia.ko</Path>
         </Files>
     </Package>
     <Package>
@@ -34,60 +34,60 @@
 </Description>
         <PartOf>xorg.driver</PartOf>
         <RuntimeDependencies>
-            <Dependency releaseFrom="188">nvidia-340-glx-driver-common</Dependency>
+            <Dependency releaseFrom="189">nvidia-340-glx-driver-common</Dependency>
         </RuntimeDependencies>
         <Files>
             <Path fileType="library">/usr/lib32/libcuda.so</Path>
             <Path fileType="library">/usr/lib32/libcuda.so.1</Path>
-            <Path fileType="library">/usr/lib32/libcuda.so.340.106</Path>
+            <Path fileType="library">/usr/lib32/libcuda.so.340.107</Path>
             <Path fileType="library">/usr/lib32/libnvcuvid.so</Path>
             <Path fileType="library">/usr/lib32/libnvcuvid.so.1</Path>
-            <Path fileType="library">/usr/lib32/libnvcuvid.so.340.106</Path>
+            <Path fileType="library">/usr/lib32/libnvcuvid.so.340.107</Path>
             <Path fileType="library">/usr/lib32/libnvidia-compiler.so</Path>
             <Path fileType="library">/usr/lib32/libnvidia-compiler.so.1</Path>
-            <Path fileType="library">/usr/lib32/libnvidia-compiler.so.340.106</Path>
+            <Path fileType="library">/usr/lib32/libnvidia-compiler.so.340.107</Path>
             <Path fileType="library">/usr/lib32/libnvidia-eglcore.so</Path>
             <Path fileType="library">/usr/lib32/libnvidia-eglcore.so.1</Path>
-            <Path fileType="library">/usr/lib32/libnvidia-eglcore.so.340.106</Path>
+            <Path fileType="library">/usr/lib32/libnvidia-eglcore.so.340.107</Path>
             <Path fileType="library">/usr/lib32/libnvidia-encode.so</Path>
             <Path fileType="library">/usr/lib32/libnvidia-encode.so.1</Path>
-            <Path fileType="library">/usr/lib32/libnvidia-encode.so.340.106</Path>
+            <Path fileType="library">/usr/lib32/libnvidia-encode.so.340.107</Path>
             <Path fileType="library">/usr/lib32/libnvidia-fbc.so</Path>
             <Path fileType="library">/usr/lib32/libnvidia-fbc.so.1</Path>
-            <Path fileType="library">/usr/lib32/libnvidia-fbc.so.340.106</Path>
+            <Path fileType="library">/usr/lib32/libnvidia-fbc.so.340.107</Path>
             <Path fileType="library">/usr/lib32/libnvidia-glcore.so</Path>
             <Path fileType="library">/usr/lib32/libnvidia-glcore.so.1</Path>
-            <Path fileType="library">/usr/lib32/libnvidia-glcore.so.340.106</Path>
+            <Path fileType="library">/usr/lib32/libnvidia-glcore.so.340.107</Path>
             <Path fileType="library">/usr/lib32/libnvidia-glsi.so</Path>
             <Path fileType="library">/usr/lib32/libnvidia-glsi.so.1</Path>
-            <Path fileType="library">/usr/lib32/libnvidia-glsi.so.340.106</Path>
+            <Path fileType="library">/usr/lib32/libnvidia-glsi.so.340.107</Path>
             <Path fileType="library">/usr/lib32/libnvidia-ifr.so</Path>
             <Path fileType="library">/usr/lib32/libnvidia-ifr.so.1</Path>
-            <Path fileType="library">/usr/lib32/libnvidia-ifr.so.340.106</Path>
+            <Path fileType="library">/usr/lib32/libnvidia-ifr.so.340.107</Path>
             <Path fileType="library">/usr/lib32/libnvidia-ml.so</Path>
             <Path fileType="library">/usr/lib32/libnvidia-ml.so.1</Path>
-            <Path fileType="library">/usr/lib32/libnvidia-ml.so.340.106</Path>
+            <Path fileType="library">/usr/lib32/libnvidia-ml.so.340.107</Path>
             <Path fileType="library">/usr/lib32/libnvidia-opencl.so</Path>
             <Path fileType="library">/usr/lib32/libnvidia-opencl.so.1</Path>
-            <Path fileType="library">/usr/lib32/libnvidia-opencl.so.340.106</Path>
+            <Path fileType="library">/usr/lib32/libnvidia-opencl.so.340.107</Path>
             <Path fileType="library">/usr/lib32/libnvidia-tls.so</Path>
             <Path fileType="library">/usr/lib32/libnvidia-tls.so.1</Path>
-            <Path fileType="library">/usr/lib32/libnvidia-tls.so.340.106</Path>
+            <Path fileType="library">/usr/lib32/libnvidia-tls.so.340.107</Path>
             <Path fileType="library">/usr/lib32/nvidia/libEGL.so</Path>
             <Path fileType="library">/usr/lib32/nvidia/libEGL.so.1</Path>
-            <Path fileType="library">/usr/lib32/nvidia/libEGL.so.340.106</Path>
+            <Path fileType="library">/usr/lib32/nvidia/libEGL.so.340.107</Path>
             <Path fileType="library">/usr/lib32/nvidia/libGL.so</Path>
             <Path fileType="library">/usr/lib32/nvidia/libGL.so.1</Path>
-            <Path fileType="library">/usr/lib32/nvidia/libGL.so.340.106</Path>
+            <Path fileType="library">/usr/lib32/nvidia/libGL.so.340.107</Path>
             <Path fileType="library">/usr/lib32/nvidia/libGLESv1_CM.so</Path>
             <Path fileType="library">/usr/lib32/nvidia/libGLESv1_CM.so.1</Path>
-            <Path fileType="library">/usr/lib32/nvidia/libGLESv1_CM.so.340.106</Path>
+            <Path fileType="library">/usr/lib32/nvidia/libGLESv1_CM.so.340.107</Path>
             <Path fileType="library">/usr/lib32/nvidia/libGLESv2.so</Path>
             <Path fileType="library">/usr/lib32/nvidia/libGLESv2.so.2</Path>
-            <Path fileType="library">/usr/lib32/nvidia/libGLESv2.so.340.106</Path>
+            <Path fileType="library">/usr/lib32/nvidia/libGLESv2.so.340.107</Path>
             <Path fileType="library">/usr/lib32/vdpau/libvdpau_nvidia.so</Path>
             <Path fileType="library">/usr/lib32/vdpau/libvdpau_nvidia.so.1</Path>
-            <Path fileType="library">/usr/lib32/vdpau/libvdpau_nvidia.so.340.106</Path>
+            <Path fileType="library">/usr/lib32/vdpau/libvdpau_nvidia.so.340.107</Path>
         </Files>
     </Package>
     <Package>
@@ -111,58 +111,58 @@
             <Path fileType="library">/usr/lib/systemd/system/nvidia-persistenced.service</Path>
             <Path fileType="library">/usr/lib64/libcuda.so</Path>
             <Path fileType="library">/usr/lib64/libcuda.so.1</Path>
-            <Path fileType="library">/usr/lib64/libcuda.so.340.106</Path>
+            <Path fileType="library">/usr/lib64/libcuda.so.340.107</Path>
             <Path fileType="library">/usr/lib64/libnvcuvid.so</Path>
             <Path fileType="library">/usr/lib64/libnvcuvid.so.1</Path>
-            <Path fileType="library">/usr/lib64/libnvcuvid.so.340.106</Path>
+            <Path fileType="library">/usr/lib64/libnvcuvid.so.340.107</Path>
             <Path fileType="library">/usr/lib64/libnvidia-cfg.so</Path>
             <Path fileType="library">/usr/lib64/libnvidia-cfg.so.1</Path>
-            <Path fileType="library">/usr/lib64/libnvidia-cfg.so.340.106</Path>
+            <Path fileType="library">/usr/lib64/libnvidia-cfg.so.340.107</Path>
             <Path fileType="library">/usr/lib64/libnvidia-compiler.so</Path>
             <Path fileType="library">/usr/lib64/libnvidia-compiler.so.1</Path>
-            <Path fileType="library">/usr/lib64/libnvidia-compiler.so.340.106</Path>
+            <Path fileType="library">/usr/lib64/libnvidia-compiler.so.340.107</Path>
             <Path fileType="library">/usr/lib64/libnvidia-eglcore.so</Path>
             <Path fileType="library">/usr/lib64/libnvidia-eglcore.so.1</Path>
-            <Path fileType="library">/usr/lib64/libnvidia-eglcore.so.340.106</Path>
+            <Path fileType="library">/usr/lib64/libnvidia-eglcore.so.340.107</Path>
             <Path fileType="library">/usr/lib64/libnvidia-encode.so</Path>
             <Path fileType="library">/usr/lib64/libnvidia-encode.so.1</Path>
-            <Path fileType="library">/usr/lib64/libnvidia-encode.so.340.106</Path>
+            <Path fileType="library">/usr/lib64/libnvidia-encode.so.340.107</Path>
             <Path fileType="library">/usr/lib64/libnvidia-fbc.so</Path>
             <Path fileType="library">/usr/lib64/libnvidia-fbc.so.1</Path>
-            <Path fileType="library">/usr/lib64/libnvidia-fbc.so.340.106</Path>
+            <Path fileType="library">/usr/lib64/libnvidia-fbc.so.340.107</Path>
             <Path fileType="library">/usr/lib64/libnvidia-glcore.so</Path>
             <Path fileType="library">/usr/lib64/libnvidia-glcore.so.1</Path>
-            <Path fileType="library">/usr/lib64/libnvidia-glcore.so.340.106</Path>
+            <Path fileType="library">/usr/lib64/libnvidia-glcore.so.340.107</Path>
             <Path fileType="library">/usr/lib64/libnvidia-glsi.so</Path>
             <Path fileType="library">/usr/lib64/libnvidia-glsi.so.1</Path>
-            <Path fileType="library">/usr/lib64/libnvidia-glsi.so.340.106</Path>
+            <Path fileType="library">/usr/lib64/libnvidia-glsi.so.340.107</Path>
             <Path fileType="library">/usr/lib64/libnvidia-ifr.so</Path>
             <Path fileType="library">/usr/lib64/libnvidia-ifr.so.1</Path>
-            <Path fileType="library">/usr/lib64/libnvidia-ifr.so.340.106</Path>
+            <Path fileType="library">/usr/lib64/libnvidia-ifr.so.340.107</Path>
             <Path fileType="library">/usr/lib64/libnvidia-ml.so</Path>
             <Path fileType="library">/usr/lib64/libnvidia-ml.so.1</Path>
-            <Path fileType="library">/usr/lib64/libnvidia-ml.so.340.106</Path>
+            <Path fileType="library">/usr/lib64/libnvidia-ml.so.340.107</Path>
             <Path fileType="library">/usr/lib64/libnvidia-opencl.so</Path>
             <Path fileType="library">/usr/lib64/libnvidia-opencl.so.1</Path>
-            <Path fileType="library">/usr/lib64/libnvidia-opencl.so.340.106</Path>
+            <Path fileType="library">/usr/lib64/libnvidia-opencl.so.340.107</Path>
             <Path fileType="library">/usr/lib64/libnvidia-tls.so</Path>
             <Path fileType="library">/usr/lib64/libnvidia-tls.so.1</Path>
-            <Path fileType="library">/usr/lib64/libnvidia-tls.so.340.106</Path>
+            <Path fileType="library">/usr/lib64/libnvidia-tls.so.340.107</Path>
             <Path fileType="library">/usr/lib64/libnvidia-wfb.so</Path>
             <Path fileType="library">/usr/lib64/libnvidia-wfb.so.1</Path>
-            <Path fileType="library">/usr/lib64/libnvidia-wfb.so.340.106</Path>
+            <Path fileType="library">/usr/lib64/libnvidia-wfb.so.340.107</Path>
             <Path fileType="library">/usr/lib64/nvidia/libEGL.so</Path>
             <Path fileType="library">/usr/lib64/nvidia/libEGL.so.1</Path>
-            <Path fileType="library">/usr/lib64/nvidia/libEGL.so.340.106</Path>
+            <Path fileType="library">/usr/lib64/nvidia/libEGL.so.340.107</Path>
             <Path fileType="library">/usr/lib64/nvidia/libGL.so</Path>
             <Path fileType="library">/usr/lib64/nvidia/libGL.so.1</Path>
-            <Path fileType="library">/usr/lib64/nvidia/libGL.so.340.106</Path>
+            <Path fileType="library">/usr/lib64/nvidia/libGL.so.340.107</Path>
             <Path fileType="library">/usr/lib64/nvidia/libGLESv1_CM.so</Path>
             <Path fileType="library">/usr/lib64/nvidia/libGLESv1_CM.so.1</Path>
-            <Path fileType="library">/usr/lib64/nvidia/libGLESv1_CM.so.340.106</Path>
+            <Path fileType="library">/usr/lib64/nvidia/libGLESv1_CM.so.340.107</Path>
             <Path fileType="library">/usr/lib64/nvidia/libGLESv2.so</Path>
             <Path fileType="library">/usr/lib64/nvidia/libGLESv2.so.2</Path>
-            <Path fileType="library">/usr/lib64/nvidia/libGLESv2.so.340.106</Path>
+            <Path fileType="library">/usr/lib64/nvidia/libGLESv2.so.340.107</Path>
             <Path fileType="library">/usr/lib64/nvidia/modules/libglx.so</Path>
             <Path fileType="library">/usr/lib64/nvidia/modules/libglx.so.1</Path>
             <Path fileType="library">/usr/lib64/sysusers.d/nvidia-340-glx-driver.conf</Path>
@@ -170,13 +170,13 @@
             <Path fileType="library">/usr/lib64/udev/rules.d/71-nvidia.rules</Path>
             <Path fileType="library">/usr/lib64/vdpau/libvdpau_nvidia.so</Path>
             <Path fileType="library">/usr/lib64/vdpau/libvdpau_nvidia.so.1</Path>
-            <Path fileType="library">/usr/lib64/vdpau/libvdpau_nvidia.so.340.106</Path>
+            <Path fileType="library">/usr/lib64/vdpau/libvdpau_nvidia.so.340.107</Path>
             <Path fileType="library">/usr/lib64/xorg/modules/drivers/nvidia_drv.so</Path>
             <Path fileType="data">/usr/share/OpenCL/vendors/nvidia.icd</Path>
             <Path fileType="data">/usr/share/X11/xorg.conf.d/10-nvidia.conf</Path>
             <Path fileType="data">/usr/share/applications/nvidia-settings.desktop</Path>
             <Path fileType="data">/usr/share/ld.so.conf.d/00-nvidia.conf</Path>
-            <Path fileType="data">/usr/share/nvidia/nvidia-application-profiles-340.106-key-documentation</Path>
+            <Path fileType="data">/usr/share/nvidia/nvidia-application-profiles-340.107-key-documentation</Path>
             <Path fileType="data">/usr/share/pixmaps/nvidia-settings.png</Path>
         </Files>
         <Conflicts>
@@ -191,11 +191,11 @@
 </Description>
         <PartOf>kernel.drivers</PartOf>
         <RuntimeDependencies>
-            <Dependency releaseFrom="188">nvidia-340-glx-driver-common</Dependency>
+            <Dependency releaseFrom="189">nvidia-340-glx-driver-common</Dependency>
         </RuntimeDependencies>
         <Files>
-            <Path fileType="data">/lib/modules/4.17.2-78.current/kernel/drivers/video/nvidia-uvm.ko</Path>
-            <Path fileType="data">/lib/modules/4.17.2-78.current/kernel/drivers/video/nvidia.ko</Path>
+            <Path fileType="data">/lib/modules/4.17.3-79.current/kernel/drivers/video/nvidia-uvm.ko</Path>
+            <Path fileType="data">/lib/modules/4.17.3-79.current/kernel/drivers/video/nvidia.ko</Path>
         </Files>
     </Package>
     <Package>
@@ -210,9 +210,9 @@
         </Files>
     </Package>
     <History>
-        <Update release="188">
-            <Date>2018-06-24</Date>
-            <Version>340.106</Version>
+        <Update release="189">
+            <Date>2018-06-30</Date>
+            <Version>340.107</Version>
             <Comment>Packaging update</Comment>
             <Name>Bryan T. Meyers</Name>
             <Email>bmeyers@datadrake.com</Email>
