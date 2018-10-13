@@ -20,11 +20,11 @@
 </Description>
         <PartOf>kernel.drivers</PartOf>
         <RuntimeDependencies>
-            <Dependency releaseFrom="204">nvidia-340-glx-driver-common</Dependency>
+            <Dependency releaseFrom="205">nvidia-340-glx-driver-common</Dependency>
         </RuntimeDependencies>
         <Files>
-            <Path fileType="data">/lib/modules/4.9.131-110.lts/kernel/drivers/video/nvidia-uvm.ko</Path>
-            <Path fileType="data">/lib/modules/4.9.131-110.lts/kernel/drivers/video/nvidia.ko</Path>
+            <Path fileType="data">/lib/modules/4.9.133-111.lts/kernel/drivers/video/nvidia-uvm.ko</Path>
+            <Path fileType="data">/lib/modules/4.9.133-111.lts/kernel/drivers/video/nvidia.ko</Path>
         </Files>
     </Package>
     <Package>
@@ -34,7 +34,7 @@
 </Description>
         <PartOf>xorg.driver</PartOf>
         <RuntimeDependencies>
-            <Dependency releaseFrom="204">nvidia-340-glx-driver-common</Dependency>
+            <Dependency releaseFrom="205">nvidia-340-glx-driver-common</Dependency>
         </RuntimeDependencies>
         <Files>
             <Path fileType="library">/usr/lib32/libcuda.so</Path>
@@ -191,11 +191,11 @@
 </Description>
         <PartOf>kernel.drivers</PartOf>
         <RuntimeDependencies>
-            <Dependency releaseFrom="204">nvidia-340-glx-driver-common</Dependency>
+            <Dependency releaseFrom="205">nvidia-340-glx-driver-common</Dependency>
         </RuntimeDependencies>
         <Files>
-            <Path fileType="data">/lib/modules/4.18.12-94.current/kernel/drivers/video/nvidia-uvm.ko</Path>
-            <Path fileType="data">/lib/modules/4.18.12-94.current/kernel/drivers/video/nvidia.ko</Path>
+            <Path fileType="data">/lib/modules/4.18.14-95.current/kernel/drivers/video/nvidia-uvm.ko</Path>
+            <Path fileType="data">/lib/modules/4.18.14-95.current/kernel/drivers/video/nvidia.ko</Path>
         </Files>
     </Package>
     <Package>
@@ -210,8 +210,8 @@
         </Files>
     </Package>
     <History>
-        <Update release="204">
-            <Date>2018-10-09</Date>
+        <Update release="205">
+            <Date>2018-10-13</Date>
             <Version>340.107</Version>
             <Comment>Packaging update</Comment>
             <Name>Bryan T. Meyers</Name>
