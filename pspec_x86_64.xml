@@ -20,11 +20,11 @@
 </Description>
         <PartOf>kernel.drivers</PartOf>
         <RuntimeDependencies>
-            <Dependency releaseFrom="205">nvidia-340-glx-driver-common</Dependency>
+            <Dependency releaseFrom="206">nvidia-340-glx-driver-common</Dependency>
         </RuntimeDependencies>
         <Files>
-            <Path fileType="data">/lib/modules/4.9.133-111.lts/kernel/drivers/video/nvidia-uvm.ko</Path>
-            <Path fileType="data">/lib/modules/4.9.133-111.lts/kernel/drivers/video/nvidia.ko</Path>
+            <Path fileType="data">/lib/modules/4.9.135-112.lts/kernel/drivers/video/nvidia-uvm.ko</Path>
+            <Path fileType="data">/lib/modules/4.9.135-112.lts/kernel/drivers/video/nvidia.ko</Path>
         </Files>
     </Package>
     <Package>
@@ -34,7 +34,7 @@
 </Description>
         <PartOf>xorg.driver</PartOf>
         <RuntimeDependencies>
-            <Dependency releaseFrom="205">nvidia-340-glx-driver-common</Dependency>
+            <Dependency releaseFrom="206">nvidia-340-glx-driver-common</Dependency>
         </RuntimeDependencies>
         <Files>
             <Path fileType="library">/usr/lib32/libcuda.so</Path>
@@ -180,7 +180,8 @@
             <Path fileType="data">/usr/share/pixmaps/nvidia-settings.png</Path>
         </Files>
         <Conflicts>
-            <Package>nvidia-304-glx-driver-common</Package>
+            <Package>nvidia-390-glx-driver-common</Package>
+            <Package>nvidia-beta-driver-common</Package>
             <Package>nvidia-glx-driver-common</Package>
         </Conflicts>
     </Package>
@@ -191,11 +192,11 @@
 </Description>
         <PartOf>kernel.drivers</PartOf>
         <RuntimeDependencies>
-            <Dependency releaseFrom="205">nvidia-340-glx-driver-common</Dependency>
+            <Dependency releaseFrom="206">nvidia-340-glx-driver-common</Dependency>
         </RuntimeDependencies>
         <Files>
-            <Path fileType="data">/lib/modules/4.18.14-95.current/kernel/drivers/video/nvidia-uvm.ko</Path>
-            <Path fileType="data">/lib/modules/4.18.14-95.current/kernel/drivers/video/nvidia.ko</Path>
+            <Path fileType="data">/lib/modules/4.18.16-96.current/kernel/drivers/video/nvidia-uvm.ko</Path>
+            <Path fileType="data">/lib/modules/4.18.16-96.current/kernel/drivers/video/nvidia.ko</Path>
         </Files>
     </Package>
     <Package>
@@ -210,8 +211,8 @@
         </Files>
     </Package>
     <History>
-        <Update release="205">
-            <Date>2018-10-13</Date>
+        <Update release="206">
+            <Date>2018-10-21</Date>
             <Version>340.107</Version>
             <Comment>Packaging update</Comment>
             <Name>Bryan T. Meyers</Name>

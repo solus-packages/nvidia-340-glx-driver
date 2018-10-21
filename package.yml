@@ -1,6 +1,6 @@
 name       : nvidia-340-glx-driver
 version    : '340.107'
-release    : 205
+release    : 206
 source     :
     - http://us.download.nvidia.com/XFree86/Linux-x86_64/340.107/NVIDIA-Linux-x86_64-340.107.run : e3e359964ed568008584c4fb2dbcb76b76a848591d1456a783e94dd0c7f6695f
 extract    : no
@@ -33,7 +33,8 @@ rundeps    :
     - current : nvidia-340-glx-driver-common
 conflicts  :
     - common :
-        - nvidia-304-glx-driver-common
+        - nvidia-390-glx-driver-common
+        - nvidia-beta-driver-common
         - nvidia-glx-driver-common
 patterns   :
     - common : /*
