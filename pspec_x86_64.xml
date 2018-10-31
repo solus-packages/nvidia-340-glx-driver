@@ -3,8 +3,8 @@
         <Name>nvidia-340-glx-driver</Name>
         <Homepage>https://nvidia.com</Homepage>
         <Packager>
-            <Name>Thomas Staudinger</Name>
-            <Email>staudi.kaos@gmail.com</Email>
+            <Name>Bryan T. Meyers</Name>
+            <Email>bmeyers@datadrake.com</Email>
         </Packager>
         <License>EULA</License>
         <PartOf>kernel.drivers</PartOf>
@@ -20,7 +20,7 @@
 </Description>
         <PartOf>kernel.drivers</PartOf>
         <RuntimeDependencies>
-            <Dependency releaseFrom="207">nvidia-340-glx-driver-common</Dependency>
+            <Dependency releaseFrom="208">nvidia-340-glx-driver-common</Dependency>
         </RuntimeDependencies>
         <Files>
             <Path fileType="data">/lib/modules/4.9.135-112.lts/kernel/drivers/video/nvidia-uvm.ko</Path>
@@ -39,7 +39,7 @@
 </Description>
         <PartOf>xorg.driver</PartOf>
         <RuntimeDependencies>
-            <Dependency releaseFrom="207">nvidia-340-glx-driver-common</Dependency>
+            <Dependency releaseFrom="208">nvidia-340-glx-driver-common</Dependency>
         </RuntimeDependencies>
         <Files>
             <Path fileType="library">/usr/lib32/libcuda.so</Path>
@@ -202,11 +202,11 @@
 </Description>
         <PartOf>kernel.drivers</PartOf>
         <RuntimeDependencies>
-            <Dependency releaseFrom="207">nvidia-340-glx-driver-common</Dependency>
+            <Dependency releaseFrom="208">nvidia-340-glx-driver-common</Dependency>
         </RuntimeDependencies>
         <Files>
-            <Path fileType="data">/lib/modules/4.18.16-96.current/kernel/drivers/video/nvidia-uvm.ko</Path>
-            <Path fileType="data">/lib/modules/4.18.16-96.current/kernel/drivers/video/nvidia.ko</Path>
+            <Path fileType="data">/lib/modules/4.18.16-97.current/kernel/drivers/video/nvidia-uvm.ko</Path>
+            <Path fileType="data">/lib/modules/4.18.16-97.current/kernel/drivers/video/nvidia.ko</Path>
         </Files>
         <Conflicts>
             <Package>nvidia-390-glx-driver-current</Package>
@@ -226,12 +226,12 @@
         </Files>
     </Package>
     <History>
-        <Update release="207">
-            <Date>2018-10-28</Date>
+        <Update release="208">
+            <Date>2018-10-31</Date>
             <Version>340.107</Version>
             <Comment>Packaging update</Comment>
-            <Name>Thomas Staudinger</Name>
-            <Email>staudi.kaos@gmail.com</Email>
+            <Name>Bryan T. Meyers</Name>
+            <Email>bmeyers@datadrake.com</Email>
         </Update>
     </History>
 </PISI>
