@@ -3,8 +3,8 @@
         <Name>nvidia-340-glx-driver</Name>
         <Homepage>https://nvidia.com</Homepage>
         <Packager>
-            <Name>Bryan T. Meyers</Name>
-            <Email>bmeyers@datadrake.com</Email>
+            <Name>Thomas Staudinger</Name>
+            <Email>staudi.kaos@gmail.com</Email>
         </Packager>
         <License>EULA</License>
         <PartOf>kernel.drivers</PartOf>
@@ -20,7 +20,7 @@
 </Description>
         <PartOf>kernel.drivers</PartOf>
         <RuntimeDependencies>
-            <Dependency releaseFrom="209">nvidia-340-glx-driver-common</Dependency>
+            <Dependency releaseFrom="210">nvidia-340-glx-driver-common</Dependency>
         </RuntimeDependencies>
         <Files>
             <Path fileType="data">/lib/modules/4.9.136-113.lts/kernel/drivers/video/nvidia-uvm.ko</Path>
@@ -29,6 +29,7 @@
         <Conflicts>
             <Package>nvidia-390-glx-driver</Package>
             <Package>nvidia-beta-driver</Package>
+            <Package>nvidia-developer-driver</Package>
             <Package>nvidia-glx-driver</Package>
         </Conflicts>
     </Package>
@@ -39,7 +40,7 @@
 </Description>
         <PartOf>xorg.driver</PartOf>
         <RuntimeDependencies>
-            <Dependency releaseFrom="209">nvidia-340-glx-driver-common</Dependency>
+            <Dependency releaseFrom="210">nvidia-340-glx-driver-common</Dependency>
         </RuntimeDependencies>
         <Files>
             <Path fileType="library">/usr/lib32/libcuda.so</Path>
@@ -97,6 +98,7 @@
         <Conflicts>
             <Package>nvidia-390-glx-driver-32bit</Package>
             <Package>nvidia-beta-driver-32bit</Package>
+            <Package>nvidia-developer-driver-32bit</Package>
             <Package>nvidia-glx-driver-32bit</Package>
         </Conflicts>
     </Package>
@@ -192,6 +194,7 @@
         <Conflicts>
             <Package>nvidia-390-glx-driver-common</Package>
             <Package>nvidia-beta-driver-common</Package>
+            <Package>nvidia-developer-driver-common</Package>
             <Package>nvidia-glx-driver-common</Package>
         </Conflicts>
     </Package>
@@ -202,7 +205,7 @@
 </Description>
         <PartOf>kernel.drivers</PartOf>
         <RuntimeDependencies>
-            <Dependency releaseFrom="209">nvidia-340-glx-driver-common</Dependency>
+            <Dependency releaseFrom="210">nvidia-340-glx-driver-common</Dependency>
         </RuntimeDependencies>
         <Files>
             <Path fileType="data">/lib/modules/4.19.1-98.current/kernel/drivers/video/nvidia-uvm.ko</Path>
@@ -211,6 +214,7 @@
         <Conflicts>
             <Package>nvidia-390-glx-driver-current</Package>
             <Package>nvidia-beta-driver-current</Package>
+            <Package>nvidia-developer-driver-current</Package>
             <Package>nvidia-glx-driver-current</Package>
         </Conflicts>
     </Package>
@@ -226,12 +230,12 @@
         </Files>
     </Package>
     <History>
-        <Update release="209">
-            <Date>2018-11-11</Date>
+        <Update release="210">
+            <Date>2018-11-12</Date>
             <Version>340.107</Version>
             <Comment>Packaging update</Comment>
-            <Name>Bryan T. Meyers</Name>
-            <Email>bmeyers@datadrake.com</Email>
+            <Name>Thomas Staudinger</Name>
+            <Email>staudi.kaos@gmail.com</Email>
         </Update>
     </History>
 </PISI>
