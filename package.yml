@@ -1,6 +1,6 @@
 name       : nvidia-340-glx-driver
 version    : '340.107'
-release    : 213
+release    : 214
 source     :
     - http://us.download.nvidia.com/XFree86/Linux-x86_64/340.107/NVIDIA-Linux-x86_64-340.107.run : e3e359964ed568008584c4fb2dbcb76b76a848591d1456a783e94dd0c7f6695f
 extract    : no
