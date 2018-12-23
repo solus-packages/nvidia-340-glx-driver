@@ -1,6 +1,6 @@
 name       : nvidia-340-glx-driver
 version    : '340.107'
-release    : 216
+release    : 217
 source     :
     - http://us.download.nvidia.com/XFree86/Linux-x86_64/340.107/NVIDIA-Linux-x86_64-340.107.run : e3e359964ed568008584c4fb2dbcb76b76a848591d1456a783e94dd0c7f6695f
 extract    : no
@@ -135,18 +135,14 @@ install    : |
 
     # Strip OpenCL
     rm -v $installdir/usr/lib{32,64}/libOpenCL.so.1.0.0
-    # Get weird guys in order first
-    ln -sv libGLESv2.so.${version} $installdir/%libdir%/libGLESv2.so.2
-    ln -sv libGLESv2.so.${version} $installdir/usr/lib32/libGLESv2.so.2
 
     function redo_libs() {
         for gl in $* ; do
             i=`dirname ${gl}`
             clean=`echo $(basename ${gl})|sed -e 's@\.so\.%version%@@g'`
-            if [[ ! -e $i/${clean}.so.2 ]] ; then
-                if [[ ! -e $i/${clean}.so.1 ]] && [[ ! -e $i/${clean}.so.0 ]] ; then
-                    ln -sv `basename ${gl}` $i/${clean}.so.1
-                fi
+            soname=`objdump -p ${gl} | grep SONAME | awk '{print $2}'`
+            if [[ ! -e $i/${soname} ]] ; then
+                ln -sv `basename ${gl}` $i/${soname}
             fi
             if [[ ! -e $i/{clean}.so ]]; then
                 ln -sv `basename ${gl}` $i/${clean}.so
