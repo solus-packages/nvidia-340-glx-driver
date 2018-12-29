@@ -20,7 +20,7 @@
 </Description>
         <PartOf>kernel.drivers</PartOf>
         <RuntimeDependencies>
-            <Dependency releaseFrom="218">nvidia-340-glx-driver-common</Dependency>
+            <Dependency releaseFrom="219">nvidia-340-glx-driver-common</Dependency>
         </RuntimeDependencies>
         <Files>
             <Path fileType="data">/lib/modules/4.9.147-121.lts/kernel/drivers/video/nvidia-uvm.ko</Path>
@@ -40,7 +40,7 @@
 </Description>
         <PartOf>xorg.driver</PartOf>
         <RuntimeDependencies>
-            <Dependency releaseFrom="218">nvidia-340-glx-driver-common</Dependency>
+            <Dependency releaseFrom="219">nvidia-340-glx-driver-common</Dependency>
         </RuntimeDependencies>
         <Files>
             <Path fileType="library">/usr/lib32/libcuda.so</Path>
@@ -195,7 +195,7 @@
 </Description>
         <PartOf>kernel.drivers</PartOf>
         <RuntimeDependencies>
-            <Dependency releaseFrom="218">nvidia-340-glx-driver-common</Dependency>
+            <Dependency releaseFrom="219">nvidia-340-glx-driver-common</Dependency>
         </RuntimeDependencies>
         <Files>
             <Path fileType="data">/lib/modules/4.19.12-106.current/kernel/drivers/video/nvidia-uvm.ko</Path>
@@ -220,8 +220,8 @@
         </Files>
     </Package>
     <History>
-        <Update release="218">
-            <Date>2018-12-27</Date>
+        <Update release="219">
+            <Date>2018-12-29</Date>
             <Version>340.107</Version>
             <Comment>Packaging update</Comment>
             <Name>Bryan T. Meyers</Name>
