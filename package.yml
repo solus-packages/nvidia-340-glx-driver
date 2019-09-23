@@ -1,6 +1,6 @@
 name       : nvidia-340-glx-driver
 version    : '340.107'
-release    : 238
+release    : 239
 source     :
     - http://us.download.nvidia.com/XFree86/Linux-x86_64/340.107/NVIDIA-Linux-x86_64-340.107.run : e3e359964ed568008584c4fb2dbcb76b76a848591d1456a783e94dd0c7f6695f
 extract    : no
@@ -89,6 +89,7 @@ setup      : |
     %patch -p1 < $pkgfiles/linux-4.11.patch
     %patch -p1 < $pkgfiles/linux-5.0.patch
     %patch -p1 < $pkgfiles/linux-5.1.patch
+    %patch -p1 < $pkgfiles/linux-5.3.patch
     popd
 build      : |
     # The older NVIDIA drivers don't like -C so we pushd.
