@@ -3,8 +3,8 @@
         <Name>nvidia-340-glx-driver</Name>
         <Homepage>https://nvidia.com</Homepage>
         <Packager>
-            <Name>Bryan T. Meyers</Name>
-            <Email>bmeyers@datadrake.com</Email>
+            <Name>Joshua Strobl</Name>
+            <Email>joshua@stroblindustries.com</Email>
         </Packager>
         <License>EULA</License>
         <PartOf>kernel.drivers</PartOf>
@@ -20,11 +20,11 @@
 </Description>
         <PartOf>kernel.drivers</PartOf>
         <RuntimeDependencies>
-            <Dependency releaseFrom="254">nvidia-340-glx-driver-common</Dependency>
+            <Dependency releaseFrom="255">nvidia-340-glx-driver-common</Dependency>
         </RuntimeDependencies>
         <Files>
-            <Path fileType="data">/lib/modules/4.9.208-149.lts/kernel/drivers/video/nvidia-uvm.ko</Path>
-            <Path fileType="data">/lib/modules/4.9.208-149.lts/kernel/drivers/video/nvidia.ko</Path>
+            <Path fileType="data">/lib/modules/4.9.210-150.lts/kernel/drivers/video/nvidia-uvm.ko</Path>
+            <Path fileType="data">/lib/modules/4.9.210-150.lts/kernel/drivers/video/nvidia.ko</Path>
         </Files>
         <Conflicts>
             <Package>nvidia-390-glx-driver</Package>
@@ -40,7 +40,7 @@
 </Description>
         <PartOf>xorg.driver</PartOf>
         <RuntimeDependencies>
-            <Dependency releaseFrom="254">nvidia-340-glx-driver-common</Dependency>
+            <Dependency releaseFrom="255">nvidia-340-glx-driver-common</Dependency>
         </RuntimeDependencies>
         <Files>
             <Path fileType="library">/usr/lib32/libcuda.so</Path>
@@ -195,11 +195,11 @@
 </Description>
         <PartOf>kernel.drivers</PartOf>
         <RuntimeDependencies>
-            <Dependency releaseFrom="254">nvidia-340-glx-driver-common</Dependency>
+            <Dependency releaseFrom="255">nvidia-340-glx-driver-common</Dependency>
         </RuntimeDependencies>
         <Files>
-            <Path fileType="data">/lib/modules/5.4.8-141.current/kernel/drivers/video/nvidia-uvm.ko</Path>
-            <Path fileType="data">/lib/modules/5.4.8-141.current/kernel/drivers/video/nvidia.ko</Path>
+            <Path fileType="data">/lib/modules/5.4.12-142.current/kernel/drivers/video/nvidia-uvm.ko</Path>
+            <Path fileType="data">/lib/modules/5.4.12-142.current/kernel/drivers/video/nvidia.ko</Path>
         </Files>
         <Conflicts>
             <Package>nvidia-390-glx-driver-current</Package>
@@ -220,12 +220,12 @@
         </Files>
     </Package>
     <History>
-        <Update release="254">
-            <Date>2020-01-07</Date>
+        <Update release="255">
+            <Date>2020-01-15</Date>
             <Version>340.107</Version>
             <Comment>Packaging update</Comment>
-            <Name>Bryan T. Meyers</Name>
-            <Email>bmeyers@datadrake.com</Email>
+            <Name>Joshua Strobl</Name>
+            <Email>joshua@stroblindustries.com</Email>
         </Update>
     </History>
 </PISI>
